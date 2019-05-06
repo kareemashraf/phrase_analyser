@@ -1,12 +1,16 @@
 # phrase_analyser
-Yowe test (created using Symfony 4.2)
+Yowe test (created using Symfony 4.2)</br>
+
+<b>can be tested in the following URL: </b>
+http://ec2-52-50-116-11.eu-west-1.compute.amazonaws.com/
 <hr>
-#How to Install
+# How to Install
 
 - clone the repository
 - run : composer install
 - run : bin/console server:run
 - access it locally using by 127.0.0.1:8000 (keep in mind port 8000 might be different in your case if its busy)
+- includes one sample PhpUnit test method, jquery DataTable for the grid
 
 # Description:
 Create a web application that will analyse customer input and provide some statistics.
