@@ -6,6 +6,8 @@ $(document).ready(function(){
     	ordering: true,
     	searching: false,
     	paging: true,
+    	pageLength: 50
+
     });
 
 
