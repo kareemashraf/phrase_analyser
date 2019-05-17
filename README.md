@@ -2,7 +2,7 @@
 Yowe test (created using Symfony 4.2 with php 7.2)</br>
 (case sensitive)</br>
 <b>can be tested in the following URL: </b>
-http://ec2-52-50-116-11.eu-west-1.compute.amazonaws.com/
+http://ec2-52-17-93-191.eu-west-1.compute.amazonaws.com/
 <hr>
 
 # How to Install
