@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-        	<!-- todo: remove the CDN and include the jquery datatable to the project -->
-        	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">	
-        	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-			<link href="{{ asset('css/main.css') }}" rel="stylesheet">
-        {% endblock %}
-    </head>
-    <body>
 
-        {% block body %}
-	<div class="container">
-		<h2>Youwe test: Phrase analyser </h2>
-  <p>insert a string (not longer then 255 chars) to receive character statistics.</p>
-  		
-  		{{ form_start(form) }}
-  		
-  		<div class="form-row ">
-  			<div class="col form-group">
-  				{{ form_row(form.text) }}
-  			</div>
-  			<div class="col form-group">
-  				{{ form_row(form.submit) }}
-  			</div>
-                   {{ form_widget(form) }}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+    <!-- todo: remove the CDN and include the jquery datatable to the project -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet"> {% endblock %}
+</head>
+
+<body>
+
+    {% block body %}
+    <div class="container">
+        <h2>(php) Phrase analyser </h2>
+        <p>insert a string (not longer then 255 chars) to receive character statistics.</p>
+
+        <!-- Display the form -->
+        {{ form_start(form) }}
+
+        <div class="form-row ">
+            <div class="col form-group">
+                {{ form_row(form.text) }}
+            </div>
+            <div class="col form-group">
+                {{ form_row(form.submit) }}
+            </div>
+            {{ form_widget(form) }}
         </div>
 
-        {{ form_end(form) }}
-
-
+        {{ form_end(form) }} 
         {% if results is not null %}
-        	<table id="myTable" class="display compact" style="width:100%">
-        		<thead>
-	        		<tr>
-	        			<th>Character</th>
-	        			<th>Count</th>
-	        			<th>Before</th>
-	        			<th>After</th>
-	        			<th>Distance</th>
-	        		</tr>
-        		</thead>
-        		<tbody>
-        		{% for result in results %}
-        			<tr>
-	        			<td>{{ result.letter }}</td>
-	        			<td>{{ result.count }}</td>
-	        			<td>
-	        				{{ result.before|join(', ') }}
-	        			</td>
-	        			<td>
-	        				{{ result.after|join(', ') }}
-	        			</td>
-	        			<td>{{ result.distance }}</td>
-        			</tr>
-    			{% endfor %}
-    			</tbody>
-        	</table>
-    		
-        {% else %}
-        {% endif %}
-    </div>
-        {% endblock %}
-        {% block javascripts %}
-        	<script src="{{ asset('js/jquery.min.js') }}"></script>
-        	<!-- todo: remove the CDN and include the jquery datatable to the project -->
-			<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-			<script src="{{ asset('js/main.js') }}"></script>
+        <table id="myTable" class="display compact" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Character</th>
+                    <th>Count</th>
+                    <th>Before</th>
+                    <th>After</th>
+                    <th>Distance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.letter }}</td>
+                    <td>{{ result.count }}</td>
+                    <td>
+                        {{ result.before|join(', ') }}
+                    </td>
+                    <td>
+                        {{ result.after|join(', ') }}
+                    </td>
+                    <td>{{ result.distance }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-	
-        {% endblock %}
-    </body>
+        {% else %} 
+        <!-- here is to write what to display before analysing a phrase -->
+      {% endif %}
+    </div>
+    {% endblock %} {% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <!-- todo: remove the CDN and include the jquery datatable to the project -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+
+
+    {% endblock %}
+</body>
+
 </html>
